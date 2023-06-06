@@ -1,0 +1,175 @@
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+    crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="mobilebiewonly">
+      <div id ="imgone" class='colgate'>
+          <div class="d-flex justify-content-start">
+            <img class='banner' src='./assets/colgatebanner.png' />
+          </div>
+          <div class='colgates'>
+            <!-- <img class='colbanner' src="/assets/BGimage.png" /> -->
+          </div>
+          <div class=" d-flex justify-content-center">
+            <button id="start" class='align-items-center experience' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Start the Experience
+            </button>
+          </div>
+        </div>
+   </div>
+
+<!-- Modal -->
+
+<div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content backgroundpopup popupNext  " style="  background: #000000;  height: 86vh;
+    border: 2px solid #FFFFFF;
+    border-radius: 42.5px 0px 42.5px 42.5px;">
+      <div class="modal">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+        <button type="button"  class="btn btnclose" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class='d-flex justify-content-end'>
+        <button type="button" style="visibility: hidden;" id="scannerColgateclose" class="btn-close text-white btnclose px-4 py-4" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body justify-content-center">
+        <img class='popupcamera' src='./assets/colgatepopupbanner.gif' />
+        <div>
+        </div>
+        <div class=" justify-content-center">
+          <button id="scannerColgate" style="visibility: hidden;" type="button"   class="btn next" data-bs-toggle="modal" data-bs-target="#staticBackdrops " style=" background: #028080;
+       
+        
+          color: #FFFFFF;">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div id="gif" style=" display: none;">
+    <div>
+        <div id='mobilebiewonly'>
+            <div className=''>
+                <div class="d-flex justify-content-start">
+                    <img className='banner' src='./assets/colgatebanner.png' />
+                </div>
+                <div className='d-flex justify-content-center'>
+                    <img src='./assets/scanner-bar-2--30fps--460px.gif' />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="largegif" style=" display: none;">
+  <div>
+      <div id='mobilebiewonly'>
+          <div className=''>
+             
+              <div className='d-flex justify-content-center'>
+                  <img src='./assets/bubble.gif' />
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<a-scene checking mindar-image="imageTargetSrc: assets/fulltargets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+  <a-assets>
+    <a-asset-item id="modelsrc" src="assets/final13.glb"></a-asset-item>
+  </a-assets>>
+  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+  <a-entity
+  light="type: directional;
+     intensity: 1.5;
+     castShadow: true;
+     shadowMapHeight:2048;
+     shadowMapWidth:2048;
+     shadowCameraTop: 10;
+     target: #model;"
+  position="1 4.3 2.5"
+  shadow>
+ </a-entity>
+ 
+ <a-light type="ambient" intensity="1"></a-light>
+  <a-entity id="target" mindar-image-target="targetIndex: 0">
+    <a-entity
+    scale="2 2 2"
+    id="model"
+    gltf-model="#modelsrc"
+    shadow="receive: false">
+  </a-entity>
+  </a-entity>
+</a-scene>
+    <!-- <a-scene mindar-face embedded vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-camera active="false" position="0 0 0"></a-camera>
+        <a-entity mindar-face-target="anchorIndex: 1">
+          <a-sphere color="green" radius="0.1"></a-sphere>
+        </a-entity>
+      </a-scene> -->
+     <script>
+       const gifi = document.getElementById("gif")
+  const screenone = document.getElementById("imgone")
+  const startExpre = document.getElementById("start")
+  const startexp = document.getElementById("scannerColgate")
+  const maindiv = document.getElementById("mobilebiewonly");
+  const teethvideo = document.getElementById("largegif");
+  const imgtarget = document.getElementById("target")
+  const Model = document.getElementById("model")
+  startexp.onclick = () =>{
+     maindiv.style.display="none"
+     gifi.style.display="block"
+    //  setTimeout(function(){gifi.style.display="none" }, 3000);
+    //  setTimeout(function(){teethvideo.style.display="block" }, 11000);
+    //  setTimeout(function(){teethvideo.style.display="none" }, 19000);
+  }
+  startExpre.onclick = () => {
+    screenone.style.display="none"
+  }
+       function nextPopUp(){
+        document.getElementById("scannerColgate").style.visibility="visible";
+        document.getElementById("scannerColgateclose").style.visibility="visible";
+    
+      }
+      setTimeout('nextPopUp()',6800)
+      AFRAME.registerComponent("checking", {
+            tick() {
+              console.log("0")
+                  
+              //  console.log(imgtarget.object3D.visible)
+              if(imgtarget.object3D.visible === true){
+                console.log("1")
+                gifi.style.display="none"
+                  setTimeout(function(){teethvideo.style.display="block" }, 8000);
+     setTimeout(function(){teethvideo.style.display="none" }, 16000);
+                model.setAttribute('animation-mixer', {
+        clip: 'Animation',
+        loop: 'once',
+        crossFadeDuration: 0.4,
+      })
+                
+              } 
+            }
+        });
+     </script>
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+       crossorigin="anonymous"></script>
+  </body>
+</html>
